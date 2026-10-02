@@ -5,24 +5,24 @@ from typing import List
 app = FastAPI(title="Medical AI ML Service")
 
 
-# Request Schema
+
 class SymptomRequest(BaseModel):
     symptoms: List[str]
 
 
-# Health Check Route
+
 @app.get("/")
 def health_check():
     return {"status": "ML Server Running"}
 
 
-# Prediction Route
+
 @app.post("/predict")
 def predict(data: SymptomRequest):
 
     symptoms = [s.lower() for s in data.symptoms]
 
-    # Dummy ML logic (replace later with real model)
+    # Dummy Logic
     if "fatigue" in symptoms and "frequent urination" in symptoms:
         result = {
             "possible_conditions": ["Diabetes"],
